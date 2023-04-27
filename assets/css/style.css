@@ -1,0 +1,110 @@
+body{
+    background-color: antiquewhite;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h1{
+    color:blue;
+    margin: 20px;
+    
+}
+
+.title-page {
+  text-align: center;
+  margin: 50px;
+}
+button{
+    background-color: brown;
+    margin: 10px;
+    padding: 10px;
+    color: white;
+    border: darkbrown solid 2px;
+    border-radius: 5px;
+}
+button:hover{
+    background-color: rgb(200, 53, 53);
+    
+}
+
+header{
+    display:flex;
+    justify-content: space-between;
+    color:blueviolet;
+    font-size: smaller;
+}
+
+.quiz-container{
+    margin-top: 50px;
+    margin-left:20px;
+}
+
+.quiz-container h1{
+    margin-left: 30px;
+}
+.question{
+    font-weight: bold;
+    color: blue;
+
+}
+.container{
+    display: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+.choice{
+    background-color: blueviolet;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: white;
+    border: purple solid 2px;
+    border-radius: 5px;
+    width: 30%;
+}
+
+.choice:hover{
+    background-color: purple;
+}
+
+.choice[data-state="checked"] {
+   background-color: hotpink;
+}
+
+ol li{
+    list-style: none;
+}
+
+#message{
+    font-style: italic;
+    color: brown;
+    font-size: large;
+    margin: 20px;
+    border-top: solid 2px blueviolet;
+    padding:10px;
+    width:50%;
+}
+
+#results{
+    margin-left: 20px;
+    margin-top: 50px;
+}
+
+#submit{
+    background-color: brown;
+    margin: 10px;
+    padding: 10px;
+    color: white;
+    border: darkbrown solid 2px;
+    border-radius: 5px;
+}
+
+#submit:hover{
+    background-color: rgb(200, 53, 53);
+}
+
+.high-scores{
+    margin-top: 50px;   
+    margin-left: 20px;
+}
+
