@@ -15,13 +15,14 @@ var startPage=document.querySelector(".title-page");
 var message = document.getElementById("message")
 var grade=0;
 var secondsLeft =60;
-var inputInitials=document.getElementById("initials").value;
+var inputInitials=document.getElementById("initials");
 var submitBtn = document.getElementById('submit');
 var final = document.querySelector(".high-scores");
 var displayScores = document.getElementById('scores');
 var goBackBtn = document.getElementById('go-back');
 var clearBtn = document.getElementById('clear-scores');
 var i=0;
+var initials=inputInitials.value;
 
 // array for question and answers
 var myQuestions =[ 
@@ -66,7 +67,7 @@ function displayQuestions(i){
         event.preventDefault();
       var element = event.target;
       element.dataset.state = 'checked';
-      element.setAttribute('style', 'background-color: pink') 
+      
      
       if(picked.answer == picked.choice[index] ){
        message.textContent='correct!';
@@ -168,24 +169,24 @@ function clean(){
   questionContainer.textContent=" ";
     choices.forEach (function(element, index){
     element.textContent=" ";
-    element.setAttribute('style', 'background-color: white');
     element.dataset.state='uncheck';
    })
 }
 
 function toMemory(event){
     
-  //event.preventDefault();
+  event.preventDefault();
+  //var initials=inputInitials.value;
   console.log(inputInitials);
-  console.log( typeof inputInitials);
-  localStorage.setItem("quiz", grade);
+  console.log( typeof initials);
+  localStorage.setItem(initials, grade);
 }
 
-function finalPage(){
+function finalPage(event){
  event.preventDefault();
   final.setAttribute('style', 'display: block');
   results.setAttribute('style','display:none');
-  //displayScores.textContent = 
+  displayScores.textContent = localStorage.setItem(initials, grade);
   //console.log(localStorage.setItem( grade));
 }
 
