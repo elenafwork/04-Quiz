@@ -6,16 +6,18 @@ body{
 h1{
     color:blue;
     margin: 20px;
-    
+    font-size: 2.5em;
 }
 
 .title-page {
   text-align: center;
-  margin: 50px;
+  margin-top: 10%;
 }
 button{
     background-color: brown;
-    margin: 10px;
+    margin-top:  20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
     padding: 10px;
     color: white;
     border: darkbrown solid 2px;
@@ -34,14 +36,16 @@ header{
 }
 
 .quiz-container{
-    margin-top: 50px;
-    margin-left:20px;
+    margin-top: 10%;
+    margin-left:20%;
+   
 }
 
 .quiz-container h1{
     margin-left: 30px;
 }
 .question{
+    font-size: 1.8em;
     font-weight: bold;
     color: blue;
 
@@ -79,23 +83,23 @@ ol li{
     font-style: italic;
     color: brown;
     font-size: large;
-    margin: 20px;
+    margin-left: 20%;
     border-top: solid 2px blueviolet;
     padding:10px;
     width:50%;
 }
 
 #results{
-    margin-left: 20px;
-    margin-top: 50px;
-}
+    margin-left: 20%;
+    margin-top: 10%;
+}   
 
-#submit{
+#submit {
     background-color: brown;
     margin: 10px;
     padding: 10px;
     color: white;
-    border: darkbrown solid 2px;
+    border: darkred solid 2px;
     border-radius: 5px;
 }
 
@@ -105,6 +109,17 @@ ol li{
 
 .high-scores{
     margin-top: 50px;   
-    margin-left: 20px;
+    margin-left: 20%;
 }
 
+#scores{
+    width: 30%;
+    min-height: 20px;
+    padding: 10px;
+    margin-left: 20px;
+    margin-top: 10%;
+    background-color: floralwhite ;
+    border: solid 2px blueviolet;
+    border-radius: 5px;
+    color: blueviolet;
+}

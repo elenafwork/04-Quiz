@@ -23,6 +23,9 @@ var goBackBtn = document.getElementById('go-back');
 var clearBtn = document.getElementById('clear-scores');
 var i=0;
 var initials=inputInitials.value;
+var viewHighScore=document.querySelector(".view-high-score");
+var storedInf = {} ;
+
 
 // array for question and answers
 var myQuestions =[ 
@@ -99,7 +102,7 @@ startQuizPage();
 //actual start
 startBtn.addEventListener('click',function(){
   final.setAttribute('style', 'display: none');
-  document. body.removeChild(startPage);
+  startPage.setAttribute('style','display:none');
   timer();
   console.log('start');
   quizContainer.setAttribute('style','display: block')
@@ -125,14 +128,12 @@ startBtn.addEventListener('click',function(){
   });
 });
 
- //toMemory();
+ 
 submitBtn.addEventListener("click" , finalPage);
 goBackBtn.addEventListener('click', function(){
  location.reload();
 });
-//clearBtn.addEventListener("click", function(){})
-//localStorage.setItem(inputInitials, grade);
-// console.log(inputInitials); 
+ 
   
 
  
@@ -176,19 +177,36 @@ function clean(){
 function toMemory(event){
     
   event.preventDefault();
-  //var initials=inputInitials.value;
-  console.log(inputInitials);
-  console.log( typeof initials);
-  localStorage.setItem(initials, grade);
+  var initials=inputInitials.value;
+   storedInf.name = initials;
+   storedInf.grade=grade;
+  console.log( initials);
+  
+  localStorage.setItem(initials, JSON.stringify(storedInf));
+  console.log(initials, JSON.stringify(storedInf));
 }
 
 function finalPage(event){
  event.preventDefault();
+ var initials=inputInitials.value;
   final.setAttribute('style', 'display: block');
   results.setAttribute('style','display:none');
-  displayScores.textContent = localStorage.setItem(initials, grade);
-  //console.log(localStorage.setItem( grade));
+  toMemory(event);
+  var scoring=JSON.parse(localStorage.getItem(initials));
+  displayScores.textContent = scoring.name +' - ' + scoring.grade;
+  console.log("scoring ", scoring);
+  //console.log(localStorage.getItem(initials));
 }
 
+clearBtn.addEventListener('click', function (){
+  displayScores.textContent =" ";
+})
 
-
+viewHighScore.addEventListener("click", function(){
+  final.setAttribute('style', 'display: block');
+  secondsLeft = 0;
+  message.setAttribute('style','display:none');
+  quizContainer.setAttribute('style','display:none');
+  resultsContainer.setAttribute('style','display:none');
+  startPage.setAttribute('style','display:none');
+})
