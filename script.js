@@ -14,14 +14,14 @@ var startPage=document.querySelector(".title-page");
 
 var message = document.getElementById("message")
 var grade=0;
-var secondsLeft =60;
+var secondsLeft =75;
 var inputInitials=document.getElementById("initials");
 var submitBtn = document.getElementById('submit');
 var final = document.querySelector(".high-scores");
 var displayScores = document.getElementById('scores');
 var goBackBtn = document.getElementById('go-back');
 var clearBtn = document.getElementById('clear-scores');
-var i=0;
+//var i=0;
 var initials=inputInitials.value;
 var viewHighScore=document.querySelector(".view-high-score");
 var storedInf = {} ;
@@ -57,47 +57,57 @@ function startQuizPage(){
 //display questions on the page
 function displayQuestions(i){
   
-  var picked = myQuestions[i];
-  if (i<myQuestions.length) {
-    
+  if ( i<  myQuestions.length) {
+    event.preventDefault();
+    var picked = myQuestions[i];
     questionContainer.textContent = picked.question;
     console.log(questionContainer.textContent);
     choices.forEach (function(element, index){
-      choices.push
+      
       element.textContent = picked.choice[index];
       console.log(picked.choice[index]);
       element.addEventListener('click', function(){
-        event.preventDefault();
-      var element = event.target;
-      element.dataset.state = 'checked';
+          event.preventDefault();
+        var element = event.target;
+        element.dataset.state = 'checked';
+        
+        //checking if chosen is correct answer
+        if( element.innerHTML == picked.answer ){
+        message.textContent='correct!';
+        grade=grade+1;
+        console.log("correct! +1" , grade);
+          
+        } else {
+        message.textContent = "oh no!";
+        grade=grade;
+        secondsLeft-=10;
+         
+         
+        console.log("lost! grade is same" , grade)
+        return;
+
+        }
+     
       
      
-      if(picked.answer == picked.choice[index] ){
-       message.textContent='correct!';
-       grade=grade+1;
-       
-        
-        } else {
-       message.textContent = "oh no!";
-       
-       secondsLeft-=10;
-       return;
-    }
-      //localStorage.setItem("quiz", grade);
-      console.log('garde ', grade);
-    //element.dataset.state = 'uncheck';
-  })
+        //localStorage.setItem("quiz", grade);
+         //console.log('garde ', grade);
+        //element.dataset.state = 'uncheck';
+      })
 
 
 
-      });
+    });
     
+  }else{
+    return;
   }
     
 }
 
 
 //quiz start
+
 startQuizPage();
 //actual start
 startBtn.addEventListener('click',function(){
@@ -113,11 +123,11 @@ startBtn.addEventListener('click',function(){
   nextBtn.addEventListener("click", function(){
     if (i< myQuestions.length){
       clean();
-      // i++;
+      
       displayQuestions(i);
-      i++;
+      //i++;
       console.log(i);
-      //element.dataset.state='uncheck';
+      i++;
     } else  if (i===myQuestions.length){
       secondsLeft=0;
       console.log('secondsLeft=0')
@@ -148,7 +158,7 @@ function timer(){
     secondsLeft--;
     timeEl.textContent =secondsLeft;
 
-    if(secondsLeft === 0) {
+    if(secondsLeft<= 0) {
       // Stops execution of action at set interval
       clearInterval(timerInterval);
       sendMessage();
